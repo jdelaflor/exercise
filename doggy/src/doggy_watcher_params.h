@@ -28,7 +28,7 @@ struct doggy_parameters
   char doggy_path[MAX_LENGTH];
   /*file size in bytes*/
   long long log_size;
-} doggy_parameters;
+};
 
 int configure_doggy(struct doggy_parameters * parameters);
 

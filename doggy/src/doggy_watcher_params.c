@@ -42,6 +42,8 @@ int parse_config (struct doggy_parameters * parameters)
   int return_value = ERROR;
   char name[MAX_LENGTH];
   char value[MAX_LENGTH];
+  long long safety_log_size = DEFAULT_LOG_SIZE;
+  int safety_instance_number = DEFAULT_INSTANCES;
   FILE *filepointer = fopen (CONFIG_FILE, "r");
   if (filepointer == NULL)
   {
@@ -78,15 +80,27 @@ int parse_config (struct doggy_parameters * parameters)
             strncpy (value, string, MAX_LENGTH);
             trim_string (value);
             if (strcmp(name, INSTANCES)==0)
-              /*Unprotected against wrong values*/
-              /*to check*/
-              parameters->number_of_instances=atoi(value);
+            {
+              safety_instance_number = atoi(value);
+              if ( 0 > safety_instance_number )
+              {
+                safety_instance_number = DEFAULT_INSTANCES;
+              }
+              parameters->number_of_instances=safety_instance_number;
+            }
             else if (strcmp(name, PATH)==0)
+            {
               strncpy (parameters->doggy_path, value, MAX_LENGTH);
+            }
             else if (strcmp(name, LOGSIZE)==0)
-              /*Unprotected against wrong values*/
-              /*to check*/
-              parameters->log_size=atoll(value);
+            {
+              safety_log_size = atoll(value);
+              if ( 0 > safety_log_size )
+              {
+                safety_log_size = DEFAULT_LOG_SIZE;;
+              }
+              parameters->log_size=safety_log_size;
+            }
             else
               printf ("BEWARE: '%s'='%s': Unexpected values.\n", name, value);
            }
@@ -103,6 +117,7 @@ int parse_config (struct doggy_parameters * parameters)
 
 int configure_doggy(struct doggy_parameters * parameters)
 {
+  /*Parameters are initialized if any error happens with configuration file to its default values*/
   init_parameters (parameters);
   return(parse_config (parameters));
 
