@@ -34,10 +34,10 @@ int print_time(void)
   gettimeofday(&tv, NULL);
 
   /*round milliseconds*/
-  milliseconds = lrint(tv.tv_usec/1000.0); 
-  if (milliseconds>=1000) 
+  milliseconds = lrint(tv.tv_usec/FTHOUSAND); 
+  if (milliseconds>=THOUSAND) 
   { 
-    milliseconds -=1000;
+    milliseconds -=THOUSAND;
     tv.tv_sec++;
   }
 

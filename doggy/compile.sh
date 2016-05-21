@@ -1,7 +1,4 @@
-# exercise
-To compile:
-cd doggy
+#!/bin/sh
 ./autogen.sh
-mkdir $HOME/doggy
 ./configure --prefix=$HOME/doggy
 make install

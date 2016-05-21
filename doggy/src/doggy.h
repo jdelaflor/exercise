@@ -16,6 +16,10 @@
 #define ERROR -1
 #define BUFFER_SIZE 26
 #define DOGGY_MAX_RANDOM 100
+#define ZERO 0
+#define THOUSAND 1000
+#define FTHOUSAND 1000.0
+
 
 int print_time(void);
 int wait_for_next_trace(void);
