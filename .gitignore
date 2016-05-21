@@ -30,3 +30,19 @@
 
 # Debug files
 *.dSYM/
+# Autotools stuff
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache
+config.h
+config.h.in
+config.log
+configure
+depcomp
+install-sh
+missing
+.deps
+stamp-h1
+config.status
+bin
