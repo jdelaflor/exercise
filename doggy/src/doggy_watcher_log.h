@@ -13,5 +13,6 @@
 
 off_t file_size(const char *filename);
 int copy_file(char * file_source, char * file_des);
+int truncate_file(const char *filename);
 
 #endif

@@ -9,4 +9,6 @@
 #include "doggy_process.h"
 #include "doggy_watcher_log.h"
 
+#define FILE_CHECK_SLEEP 1
+
 #endif
