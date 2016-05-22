@@ -1,7 +1,5 @@
 #include "doggy_watcher.h"
 
-
-
 int main(int argc, char *argv[])
 {
   int return_value=ERROR;
@@ -39,13 +37,12 @@ int main(int argc, char *argv[])
   
   while (TRUE)
   {
-    /*Monitorice file size and make the copy*/
+    /*Monitorize file size and make the copy*/
     for (loop_counter = ZERO; loop_counter < parameters.number_of_instances; loop_counter++)
     {
         snprintf(file_name, MAX_BUF_SIZE, "/tmp/doggy_%d.log",global_thread_information[loop_counter].thread_num);
         if (file_size(file_name) >= parameters.log_size)
         {
-           /*kill -STOP*/
         snprintf(file_name_bkp, MAX_BUF_SIZE, "/tmp/doggy_%d.log_%d",global_thread_information[loop_counter].thread_num, global_thread_information[loop_counter].log_roll_times);
            if (copy_file(file_name,file_name_bkp) != ERROR) 
            {
@@ -59,9 +56,7 @@ int main(int argc, char *argv[])
            {
              printf("Error copying '%s' to '%s'\n", file_name,file_name_bkp);
            }
-   
-           /*kill -CONT*/
-        }
+         }
        
     }
     sleep(FILE_CHECK_SLEEP);

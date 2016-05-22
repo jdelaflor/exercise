@@ -19,7 +19,7 @@ void * doggy_thread_start(void *arg)
     if (pid == ZERO)
     {
       
-      printf("DOGGY %d launched with %d\n", pid,information->thread_num);
+      /*printf("doggy launched with %d\n", information->thread_num);*/
       file_descriptor = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
       dup2(file_descriptor,1);
       close(file_descriptor);
@@ -28,7 +28,7 @@ void * doggy_thread_start(void *arg)
     else if (pid > ZERO)
     {
       information->pid = pid;
-      printf("WATCHER process started for %d\n", information->pid);
+      printf("doggy process started with '%d' pid in thread '%d'\n", information->pid, information->thread_num);
       waitpid(pid, &return_value, 0);
       information->restart_times++;
     }
