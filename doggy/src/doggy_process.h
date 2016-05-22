@@ -3,10 +3,14 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include "doggy_watcher_constants.h"
 #include "doggy_watcher_params.h"
+
+#define MAX_BUF_SIZE 512
 
 
 struct thread_info {
