@@ -32,7 +32,7 @@ void print_configuration(struct doggy_parameters * parameters)
 {
   printf("Configured '%s' as '%d' instances.\n", INSTANCES,parameters->number_of_instances);
   printf("Configured '%s' as '%s'.\n", PATH,parameters->doggy_path);
-  printf("Configured '%s' as '%lld' bytes.\n", INSTANCES,parameters->log_size);
+  printf("Configured '%s' as '%lld' bytes.\n", LOGSIZE,parameters->log_size);
 }
 
 int parse_config (struct doggy_parameters * parameters)

@@ -10,8 +10,12 @@ int copy_file(char * file_source, char * file_des)
   int source = open(file_source, O_RDONLY, 0);
   int dest = open(file_des, O_WRONLY | O_CREAT, 0644);
 
-  /*if ((source < ZERO) || (dest < ZERO))
-  {*/
+  if ((source == ERROR ) || (dest == ERROR))
+  {
+    return_value = ERROR;
+  }
+  else
+  {
 
     while ((size = read(source, buffer, MAX_BUFFER_LENGTH)) > 0) {
       write(dest, buffer, size);
@@ -19,11 +23,7 @@ int copy_file(char * file_source, char * file_des)
     close(source);
     close(dest);
     return_value = NO_ERROR; 
-  /*}
-  else
-  {
-    return_value = ERROR;
-  }*/
+  }
   return (return_value);
 }
 
